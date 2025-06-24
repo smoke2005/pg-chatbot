@@ -1,9 +1,5 @@
 # ParentGeenee Chatbot
 
-**ParentGeenee** is an AI-powered chatbot that helps parents with digital safety, parenting, and app-related queries. It uses Google Cloud's Vertex AI, Gemini 1.5 Pro, and Matching Engine to generate responses based on a curated FAQ dataset.
-
----
-
 ## How It Works
 
 1. Converts FAQ data into text embeddings using `text-embedding-005`.
@@ -67,7 +63,7 @@ Upload your `embedding_data.json` file to this bucket. Copy the full Cloud Stora
 * Click “Create Index”
 * Use Matching Engine
 * Choose your `.json` file in Cloud Storage
-* Set embedding dimension to 768 and distance type to COSINE
+* Set embedding dimension to 768 and distance type to DOT_PRODUCT_DISTANCE
 
 Wait for the index to be created.
 
@@ -83,13 +79,4 @@ Update these values in your `.env` file or code.
 ### 6. Launch the Flask chatbot
 
 Run the main app file and open your browser to interact with the chatbot.
-
----
-
-## Notes on File Formats
-
-* Use `.jsonl` for storing and uploading embeddings to Matching Engine via Python SDK
-* Use `.json` for configurations like API keys (`service_account.json`)
-
-Each line in `.jsonl` is a full JSON object with an ID, vector, and metadata.
 

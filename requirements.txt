@@ -1,0 +1,9 @@
+Flask
+pandas
+numpy
+scikit-learn
+python-dotenv
+google-cloud-aiplatform
+google-generativeai
+google-auth
+grpcio

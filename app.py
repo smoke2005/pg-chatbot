@@ -176,7 +176,7 @@ def chat():
 
 if __name__ == "__main__":
     metadata_lookup = load_local_metadata("embedding_data.jsonl")
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
 
 
     

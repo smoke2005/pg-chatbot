@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 import numpy as np
 import json
 from sklearn.metrics.pairwise import cosine_similarity
+import tempfile
 
 EMBEDDING_DIM = 768
 CSV_PATH = "vector_store/faq_data.csv"
@@ -19,6 +20,13 @@ app=Flask(__name__)
 
 # Configuration
 load_dotenv()
+# Load credentials from environment
+if os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON"):
+    creds_json = os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON")
+    with tempfile.NamedTemporaryFile(mode='w', delete=False) as f:
+        f.write(creds_json)
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = f.name
+
 PROJECT_ID = os.getenv("PROJECT_ID")
 REGION = os.getenv("REGION")
 BUCKET_NAME = os.getenv("BUCKET_NAME")
@@ -168,7 +176,7 @@ def chat():
 
 if __name__ == "__main__":
     metadata_lookup = load_local_metadata("embedding_data.jsonl")
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(debug=True)
 
 
     

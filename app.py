@@ -100,7 +100,7 @@ def retrieve_context(query):
     query_vector = embedding_model.get_embeddings([query])[0].values
     endpoint1=aiplatform.MatchingEngineIndexEndpoint(index_endpoint_name=ENDPOINT_RESOURCE_NAME)
     response = endpoint1.find_neighbors(
-        deployed_index_id="pg_cb_1750666469107",
+        deployed_index_id="chatbot_index_1750940067360",
         queries=[query_vector],
         num_neighbors=3,
     )
